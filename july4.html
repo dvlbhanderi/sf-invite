@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhruvika — Tu Choose Kar ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F3;
+      --white: #FFFFFF;
+      --ink: #1A1814;
+      --ink-mid: #4A4640;
+      --ink-soft: #8A857E;
+      --border: rgba(26,24,20,0.1);
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --la-accent: #C47B4A;
+      --la-light: #F5EBE0;
+      --sf-accent: #2A5F8F;
+      --sf-light: #E0EAF5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 3.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.22;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--la-accent); }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      max-width: 500px;
+      margin: 0 auto 0.75rem;
+      line-height: 1.9;
+    }
+
+    .hero-sub strong { color: var(--ink); font-weight: 500; }
+
+    .hero-guj {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      font-family: var(--serif);
+      margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .disclaimer {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 18px;
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+
+    .disclaimer b { color: var(--ink); font-weight: 500; }
+
+    /* ── Energy meter ── */
+    .energy-section {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 2.75rem 2rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      text-align: center;
+    }
+
+    .energy-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .energy-bar-wrap {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      height: 10px;
+      max-width: 320px;
+      margin: 0 auto 0.6rem;
+      overflow: hidden;
+    }
+
+    .energy-bar {
+      height: 100%;
+      width: 12%;
+      border-radius: 999px;
+      background: #E24B4A;
+      transition: width 1.2s ease;
+    }
+
+    .energy-bar.charged { background: #639922; width: 88%; }
+
+    .energy-caption {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    .energy-toggle {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      background: none;
+      border: none;
+      font-family: var(--sans);
+    }
+
+    /* ── Section intro ── */
+    .section-intro {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .section-intro p {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 2.5vw, 1.45rem);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .section-intro span {
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* ── Choice layout ── */
+    .choice-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 700px) {
+      .choice-wrapper { grid-template-columns: 1fr; }
+    }
+
+    .option {
+      padding: 3rem 2.25rem 3.5rem;
+      border-right: 0.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .option:last-child { border-right: none; }
+
+    @media (max-width: 700px) {
+      .option { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .option:last-child { border-bottom: none; }
+    }
+
+    .option-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 4px 10px;
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+
+    .badge-la { background: var(--la-light); color: #854F0B; }
+    .badge-sf { background: var(--sf-light); color: #0C447C; }
+
+    .option-title {
+      font-family: var(--serif);
+      font-size: clamp(1.35rem, 3vw, 1.95rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 0.35rem;
+    }
+
+    .option-hook {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin-bottom: 0.3rem;
+    }
+
+    .option-subtitle {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.75rem;
+    }
+
+    .illus { margin: 0.25rem 0 1.75rem; }
+
+    .days { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+
+    .day-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.15rem 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .day-card:hover { transform: translateY(-2px); }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .day-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .label-la { color: var(--la-accent); }
+    .label-sf { color: var(--sf-accent); }
+
+    .day-vibe {
+      font-size: 10px;
+      color: var(--ink-soft);
+      background: var(--cream);
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+
+    .day-title {
+      font-family: var(--serif);
+      font-size: 0.97rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    
+
+    .day-desc {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .day-funny {
+      font-size: 0.77rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 5px 9px;
+      margin-bottom: 8px;
+      border-left: 2px solid var(--border);
+    }
+
+    .day-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tag {
+      font-size: 10px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      border: 0.5px solid var(--border);
+      color: var(--ink-soft);
+      background: var(--cream);
+    }
+
+    
+
+    .pick-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      border: none;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 1.75rem;
+    }
+
+    .pick-btn:active { transform: scale(0.98); }
+    .btn-la { background: var(--la-accent); color: var(--white); }
+    .btn-la:hover { opacity: 0.88; }
+    .btn-sf { background: var(--sf-accent); color: var(--white); }
+    .btn-sf:hover { opacity: 0.88; }
+
+    /* ── Chosen banner ── */
+    .chosen-banner {
+      display: none;
+      text-align: center;
+      padding: 4.5rem 2rem 5rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .chosen-banner.show { display: block; }
+
+    .chosen-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    .chosen-title {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    .chosen-sub {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      max-width: 440px;
+      margin: 0 auto 0.75rem;
+      line-height: 1.85;
+    }
+
+    .chosen-funny {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      max-width: 380px;
+      margin: 0 auto 2rem;
+    }
+
+    .reset-link {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      background: none;
+      border: none;
+      font-family: var(--sans);
+    }
+
+    footer {
+      background: var(--ink);
+      text-align: center;
+      padding: 1.25rem;
+      font-size: 0.75rem;
+      color: rgba(250,248,243,0.25);
+      letter-spacing: 0.05em;
+    }
+
+    .fade { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade.in { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <header class="hero fade">
+    <p class="hero-name">A very special proposal — only for Dhruvika</p>
+    <h1>Hey Dr. Dhruvika,<br>this is our <em>second date</em> invitation.</h1>
+    <p class="hero-sub">
+      Remember when you asked <strong>"So we are not meeting again?"</strong> and I casually said <strong>"I don't know"</strong>?
+      Well. I built you a whole website. So I think we both know the answer now. Please help me breaking my own record of never meeting anyone again!
+    </p>
+    <p class="hero-guj">Let's plan 4th of July long weekend?🎆</p>
+    <div class="disclaimer">
+      <b>Note:</b> You also can reject me this time - you have all the rights (It gonna be very hard though!).
+    </div>
+  </header>
+
+  <!-- ── ENERGY METER ── -->
+  <section class="energy-section fade">
+    <p class="energy-label">Dhruvika's weekday energy levels — an accurate representation</p>
+    <div class="energy-bar-wrap">
+      <div class="energy-bar" id="energy-bar"></div>
+    </div>
+    <p class="energy-caption" id="energy-caption">Monday–Friday: surviving on coffee and willpower</p>
+    <button class="energy-toggle" id="energy-toggle" onclick="toggleEnergy()">See her on the long weekend →</button>
+  </section>
+
+
+  <!-- ── SECTION INTRO ── -->
+  <div class="section-intro fade">
+    <p>Two options. Both designed only for someone special, who deserves a proper break.</p>
+    <span>You just choose  — I will plan everything(In fact, I already have plan!!!).</span>
+  </div>
+
+  <!-- ── OPTIONS ── -->
+  <div class="choice-wrapper">
+
+    <!-- OPTION A: LA -->
+    <div class="option fade">
+      <div class="option-badge badge-la">✈ Option A — I come to you</div>
+      <h2 class="option-title">LA & the Desert</h2>
+      <p class="option-hook">aka: I fly to you, so you can't say I didn't try.</p>
+      <p class="option-subtitle">Joshua Tree + Catalina Island · July 3–5</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;max-width:320px;">
+          <circle cx="240" cy="28" r="22" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1"/>
+          <circle cx="240" cy="28" r="14" fill="#FAC775" opacity="0.6"/>
+          <path d="M0 70 Q40 55 80 65 Q120 75 160 60 Q200 45 240 58 Q270 65 300 60 L300 90 L0 90Z" fill="#E8D5C0"/>
+          <path d="M60 68 L60 50 L52 56 M60 50 L68 56" stroke="#C47B4A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 65 L100 44 L90 51 M100 44 L110 51" stroke="#C47B4A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M145 58 Q155 30 165 58" stroke="#C47B4A" stroke-width="1.2" fill="none"/>
+          <path d="M212 64 Q220 44 228 64" stroke="#C47B4A" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="days">
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-la">Day 1 — July 3th</div>
+            
+          </div>
+          <div class="day-title">Joshua Tree National Park</div>
+          <div class="day-desc">Boulders, desert views, a good picnic lunch, and the quietest place you've been in months. No rushing, no agenda — just walk when you want, sit when you want.</div>
+          <div class="day-funny">"No hospital pager can reach you here. It's not a bug, it's a feature."</div>
+          <div class="day-tags">
+            <span class="tag">2.5 hr from LA</span>
+            
+            <span class="tag">boulders + trails</span>
+            
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-la">Day 2 — July 4th</div>
+            
+          </div>
+          <div class="day-title">Catalina Island</div>
+          <div class="day-desc">A car-free island an hour from Long Beach. Walk the harbour, rent a golf cart, explore — zero decisions required, I'll handle it all.</div>
+          <div class="day-funny">"Technically a different world from a busy hospital. Medically speaking."</div>
+          <div class="day-tags">
+            <span class="tag">ferry ride</span>
+            <span class="tag">car-free island</span>
+            <span class="tag">golf cart</span>
+            
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-la">Day 3 — July 5th</div>
+            
+          </div>
+          <div class="day-title">Slow morning + I drive back</div>
+          <div class="day-desc">Nothing scheduled. Good chai/coffee, a slow breakfast, actual rest. Rejection window officially opens at 11am if you need it.</div>
+          <div class="day-tags">
+            <span class="tag">zero agenda</span>
+            <span class="tag">good chai/coffee</span>
+            <!-- <span class="tag">verdict pending</span> -->
+          </div>
+        </div>
+      </div>
+
+      <button class="pick-btn btn-la" onclick="choose('la')">
+        Fine, come to LA then ✦
+      </button>
+    </div>
+
+    <!-- OPTION B: SF -->
+    <div class="option fade">
+      <div class="option-badge badge-sf">🌉 Option B — Come to me</div>
+      <h2 class="option-title">SF & Big Sur</h2>
+      <p class="option-hook">aka: a small effort from you, a lot of effort from me.</p>
+      <p class="option-subtitle">Golden Gate + Fireworks + Big Sur · July 3–5</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;max-width:320px;">
+          <path d="M0 75 Q60 60 120 68 Q180 76 240 62 Q270 55 300 60 L300 90 L0 90Z" fill="#E0EAF5"/>
+          <rect x="118" y="20" width="7" height="60" fill="#2A5F8F" rx="1"/>
+          <rect x="175" y="20" width="7" height="60" fill="#2A5F8F" rx="1"/>
+          <path d="M36 30 Q121 4 178 20 Q230 4 264 30" stroke="#2A5F8F" stroke-width="2" fill="none"/>
+          <path d="M121 20 Q150 38 178 20" stroke="#B5CDE8" stroke-width="1.5" fill="none"/>
+          <line x1="0" y1="68" x2="300" y2="68" stroke="#B5CDE8" stroke-width="2"/>
+          <line x1="121" y1="20" x2="121" y2="68" stroke="#85B7EB" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="150" y1="14" x2="150" y2="68" stroke="#85B7EB" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="178" y1="20" x2="178" y2="68" stroke="#85B7EB" stroke-width="1" stroke-dasharray="3,3"/>
+          <circle cx="248" cy="16" r="3" fill="#FAC775"/>
+          <circle cx="260" cy="8" r="2" fill="#EF9F27"/>
+          <circle cx="268" cy="20" r="2.5" fill="#FAC775" opacity="0.8"/>
+          <circle cx="256" cy="25" r="1.8" fill="#EF9F27" opacity="0.7"/>
+          <circle cx="240" cy="12" r="1.5" fill="#FAC775" opacity="0.6"/>
+        </svg>
+      </div>
+
+      <div class="days">
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-sf">Day 1 — July 3th</div>
+            
+          </div>
+          <div class="day-title">Golden Gate & Fireworks</div>
+          <div class="day-desc">No early alarm. Come when you're ready. Walk the bridge, picnic at Crissy Field, then the best seat in the city for 4th of July fireworks over the bay.</div>
+          <div class="day-funny">"Statistically the most romantic plan I've ever made. Sample size: 1."</div>
+          <div class="day-tags">
+            <span class="tag">late start</span>
+            <span class="tag">Golden Gate walk</span>
+            <span class="tag">fireworks</span>
+            
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-sf">Day 2 — July 4th</div>
+            
+          </div>
+          <div class="day-title">Big Sur</div>
+          <div class="day-desc">Highway 1 down the coast — Bixby Bridge, McWay Falls, cliffs that drop into the Pacific. Windows down, good music, no rush. One of the most beautiful drives in the world.</div>
+          <div class="day-funny">"If you fall asleep in the car, I'll take it as a compliment. You needed the rest."</div>
+          <div class="day-tags">
+            <span class="tag">Highway 1</span>
+            <span class="tag">McWay Falls</span>
+            <span class="tag">Bixby Bridge</span>
+            
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-sf">Day 3 — July 5th</div>
+            
+          </div>
+          <div class="day-title">SF morning + travel back</div>
+          <div class="day-desc">Farmers market or brunch, no schedule. You rest, I handle logistics. I'll get you to the airport — and yes, rejection window opens at brunch if needed.</div>
+          <div class="day-tags">
+            <span class="tag">zero agenda</span>
+            
+            <span class="tag">airport dropoff</span>
+            <span class="tag">verdict pending</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="pick-btn btn-sf" onclick="choose('sf')">
+        Okay fine, I'll come to SF 🌉
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ── 3RD OPTION ── -->
+  <div id="cant-make-section" style="text-align:center; padding: 2.5rem 2rem 3rem; border-top: 0.5px solid var(--border);">
+    <p style="font-size:0.8rem; color:var(--ink-soft); margin-bottom:1.25rem; font-style:italic;">or, if you're going to be like that…</p>
+    <div id="escape-wrap-3" style="position:relative; height:120px; width:200px; margin: 0 auto;">
+      <button id="escape-btn-3" class="reset-link"
+        onmouseenter="runAway(this, 'taunt-3')"
+        ontouchstart="handleTouch(event, this, 'taunt-3')"
+        style="position:absolute; transition: left 0.18s ease, top 0.18s ease; left:50%; transform:translateX(-50%); white-space:nowrap; font-size:0.85rem;">
+        Can't make it 🙅‍♀️
+      </button>
+    </div>
+    <p id="taunt-3" style="display:none; font-size:0.75rem; font-style:italic; color:var(--ink-soft);"></p>
+  </div>
+
+  <!-- ── CHOSEN BANNER ── -->
+  <div class="chosen-banner" id="chosen-banner">
+    <div class="chosen-emoji" id="chosen-emoji"></div>
+    <h2 class="chosen-title" id="chosen-title"></h2>
+    <p class="chosen-sub" id="chosen-sub"></p>
+    <p class="chosen-funny" id="chosen-funny"></p>
+    <div id="escape-wrap-1" style="position:relative; height:120px; width:280px; margin: 0 auto;">
+      <button id="escape-btn-1" class="reset-link"
+        onmouseenter="runAway(this, 'taunt-1')"
+        ontouchstart="handleTouch(event, this, 'taunt-1')"
+        onclick="reset()"
+        style="position:absolute; transition: left 0.18s ease, top 0.18s ease; left:50%; transform:translateX(-50%); white-space:nowrap;">
+        ← wait, let me reconsider
+      </button>
+    </div>
+    <p id="taunt-1" style="display:none; font-size:0.75rem; font-style:italic; color:var(--ink-soft); margin-top:0.25rem;"></p>
+  </div>
+
+  <footer>Only for Miss. Dhruvika — with slightly too much effort · July 4th weekend 2026</footer>
+
+  <script>
+    const responses = {
+      la: {
+        emoji: '🌵',
+        title: 'Desert, island, and a proper second date.',
+        sub: 'I\'ll sort everything — Joshua Tree on the 4th, Catalina on the 5th. Zero pressure. Just tell me you\'re in and I\'ll handle the rest.',
+        funny: 'Rejection window: July 5th, 11am onwards. I\'ll set a reminder. — Don\'t worry, I won\'t hold it against you.'
+      },
+      sf: {
+        emoji: '🌉',
+        title: 'Fireworks over the bay, Big Sur, and you.',
+        sub: 'I\'ll sort your travel, the Golden Gate picnic, and the Big Sur drive. Pack a jacket — SF is cold and I don\'t control the weather.',
+        funny: 'Rejection window: July 5th, brunch. I\'ve noted it in the itinerary. - I agree.'
+      }
+    };
+
+    function choose(opt) {
+      const r = responses[opt];
+      document.getElementById('chosen-emoji').textContent = r.emoji;
+      document.getElementById('chosen-title').textContent = r.title;
+      document.getElementById('chosen-sub').textContent = r.sub;
+      document.getElementById('chosen-funny').textContent = r.funny;
+      const banner = document.getElementById('chosen-banner');
+      banner.classList.add('show');
+      banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function reset() {
+      document.getElementById('chosen-banner').classList.remove('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const taunts1 = [
+      "નહીં. You already chose. Own it. 😌",
+      "Too late. The plan is happening. 🌵",
+      "નહીં નહીં. No take-backsies. 🙂",
+      // "Bold from someone who called ME out for 'I don't know.' 😏",
+      "The button has left the chat. 👋",
+      "Doctor, please. Commit to the diagnosis. 🩺",
+    ];
+    const taunts2 = [
+      "Can't or won't? Be honest. 👀",
+      "That button doesn't work either. Try again. 😇",
+      "Nice try. You're coming. 🌉",
+      "Your schedule is free. I checked. (I didn't, but still.) 😌",
+      // "The desert/bay misses you already. 🌵",
+      "Medically speaking, you need this trip. 🩺",
+    ];
+    const taunts3 = [
+      "નહીં. That's not an option. 🙂",
+      "The button lied. You can make it. 😇",
+      "Medically speaking, you need this trip. 🩺",
+      "Can't or won't? There's a difference. 👀",
+      "Your schedule is free. I checked. (I didn't. But still.) 😌",
+      "Try again. The answer is still no. 🌵",
+    ];
+    let tauntIdx1 = 0;
+    let tauntIdx2 = 0;
+    let tauntIdx3 = 0;
+
+    function runAway(btn, tauntId) {
+      const wrap = btn.parentElement;
+      const isMobile = window.innerWidth <= 700;
+
+      if (isMobile) {
+        const btnHeight = btn.offsetHeight;
+        const wrapHeight = wrap.offsetHeight;
+        const maxY = Math.max(wrapHeight - btnHeight, 0);
+        const currentTop = btn.offsetTop || 0;
+        let newTop = Math.random() * maxY;
+        let attempts = 0;
+        while (Math.abs(newTop - currentTop) < 30 && attempts < 20) {
+          newTop = Math.random() * maxY;
+          attempts++;
+        }
+        btn.style.top = newTop + 'px';
+        btn.style.left = '50%';
+        btn.style.transform = 'translateX(-50%)';
+      } else {
+        const btnWidth = btn.offsetWidth;
+        const wrapWidth = wrap.offsetWidth;
+        const maxX = Math.max(wrapWidth - btnWidth, 0);
+        const currentLeft = btn.offsetLeft;
+        let newLeft = Math.random() * maxX;
+        let attempts = 0;
+        while (Math.abs(newLeft - currentLeft) < Math.min(60, maxX * 0.4) && attempts < 20) {
+          newLeft = Math.random() * maxX;
+          attempts++;
+        }
+        btn.style.left = newLeft + 'px';
+        btn.style.transform = 'translateX(0)';
+      }
+
+      const taunt = document.getElementById(tauntId);
+      taunt.style.display = 'block';
+      if (tauntId === 'taunt-1') {
+        taunt.textContent = taunts1[tauntIdx1 % taunts1.length];
+        tauntIdx1++;
+      } else if (tauntId === 'taunt-2') {
+        taunt.textContent = taunts2[tauntIdx2 % taunts2.length];
+        tauntIdx2++;
+      } else {
+        taunt.textContent = taunts3[tauntIdx3 % taunts3.length];
+        tauntIdx3++;
+      }
+    }
+
+    function handleTouch(e, btn, tauntId) {
+      e.preventDefault();
+      runAway(btn, tauntId);
+    }
+
+    let energyCharged = false;
+    function toggleEnergy() {
+      energyCharged = !energyCharged;
+      const bar = document.getElementById('energy-bar');
+      const caption = document.getElementById('energy-caption');
+      const btn = document.getElementById('energy-toggle');
+      if (energyCharged) {
+        bar.classList.add('charged');
+        caption.textContent = 'Long weekend: actually herself again ✦';
+        btn.textContent = '← Back to weekday reality';
+      } else {
+        bar.classList.remove('charged');
+        caption.textContent = 'Monday–Friday: surviving on coffee and willpower';
+        btn.textContent = 'See her on the long weekend →';
+      }
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
