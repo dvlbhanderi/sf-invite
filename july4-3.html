@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhruvi — Tu Choose Kar ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F3;
+      --white: #FFFFFF;
+      --ink: #1A1814;
+      --ink-mid: #4A4640;
+      --ink-soft: #8A857E;
+      --border: rgba(26,24,20,0.1);
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --la-accent: #C47B4A;
+      --la-light: #F5EBE0;
+      --sf-accent: #2A5F8F;
+      --sf-light: #E0EAF5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 3.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.22;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--la-accent); }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      max-width: 500px;
+      margin: 0 auto 0.75rem;
+      line-height: 1.9;
+    }
+
+    .hero-sub strong { color: var(--ink); font-weight: 500; }
+
+    .hero-guj {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      font-family: var(--serif);
+      margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .disclaimer {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 18px;
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+
+    .disclaimer b { color: var(--ink); font-weight: 500; }
+
+    /* ── Energy meter ── */
+    .energy-section {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 2.75rem 2rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      text-align: center;
+    }
+
+    .energy-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .energy-bar-wrap {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      height: 10px;
+      max-width: 320px;
+      margin: 0 auto 0.6rem;
+      overflow: hidden;
+    }
+
+    .energy-bar {
+      height: 100%;
+      width: 12%;
+      border-radius: 999px;
+      background: #E24B4A;
+      transition: width 1.2s ease;
+    }
+
+    .energy-bar.charged { background: #639922; width: 88%; }
+
+    .energy-caption {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    .energy-toggle {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      background: none;
+      border: none;
+      font-family: var(--sans);
+    }
+
+    /* ── Banter ── */
+    .banter-section {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .banter-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .chat-bubble-wrap { display: flex; flex-direction: column; gap: 10px; }
+
+    .bubble {
+      max-width: 78%;
+      padding: 10px 15px;
+      border-radius: 16px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .bubble.him {
+      background: var(--sf-light);
+      color: #0C447C;
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+    }
+
+    .bubble.her {
+      background: var(--la-light);
+      color: #854F0B;
+      border-bottom-right-radius: 4px;
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    .bubble-label {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      opacity: 0.65;
+      margin-bottom: 3px;
+      font-weight: 500;
+    }
+
+    .banter-note {
+      margin-top: 1.5rem;
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      line-height: 1.7;
+      border-left: 2px solid var(--border);
+      padding-left: 1rem;
+    }
+
+    /* ── Section intro ── */
+    .section-intro {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .section-intro p {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 2.5vw, 1.45rem);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .section-intro span {
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* ── Choice layout ── */
+    .choice-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 700px) {
+      .choice-wrapper { grid-template-columns: 1fr; }
+    }
+
+    .option {
+      padding: 3rem 2.25rem 3.5rem;
+      border-right: 0.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .option:last-child { border-right: none; }
+
+    @media (max-width: 700px) {
+      .option { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .option:last-child { border-bottom: none; }
+    }
+
+    .option-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 4px 10px;
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+
+    .badge-la { background: var(--la-light); color: #854F0B; }
+    .badge-sf { background: var(--sf-light); color: #0C447C; }
+
+    .option-title {
+      font-family: var(--serif);
+      font-size: clamp(1.35rem, 3vw, 1.95rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 0.35rem;
+    }
+
+    .option-hook {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin-bottom: 0.3rem;
+    }
+
+    .option-subtitle {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.75rem;
+    }
+
+    .illus { margin: 0.25rem 0 1.75rem; }
+
+    .days { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+
+    .day-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.15rem 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .day-card:hover { transform: translateY(-2px); }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .day-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .label-la { color: var(--la-accent); }
+    .label-sf { color: var(--sf-accent); }
+
+    .day-vibe {
+      font-size: 10px;
+      color: var(--ink-soft);
+      background: var(--cream);
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+
+    .day-title {
+      font-family: var(--serif);
+      font-size: 0.97rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    
+
+    .day-desc {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .day-funny {
+      font-size: 0.77rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 5px 9px;
+      margin-bottom: 8px;
+      border-left: 2px solid var(--border);
+    }
+
+    .day-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tag {
+      font-size: 10px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      border: 0.5px solid var(--border);
+      color: var(--ink-soft);
+      background: var(--cream);
+    }
+
+    
+
+    .pick-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      border: none;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 1.75rem;
+    }
+
+    .pick-btn:active { transform: scale(0.98); }
+    .btn-la { background: var(--la-accent); color: var(--white); }
+    .btn-la:hover { opacity: 0.88; }
+    .btn-sf { background: var(--sf-accent); color: var(--white); }
+    .btn-sf:hover { opacity: 0.88; }
+
+    /* ── Chosen banner ── */
+    .chosen-banner {
+      display: none;
+      text-align: center;
+      padding: 4.5rem 2rem 5rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .chosen-banner.show { display: block; }
+
+    .chosen-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    .chosen-title {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    .chosen-sub {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      max-width: 440px;
+      margin: 0 auto 0.75rem;
+      line-height: 1.85;
+    }
+
+    .chosen-funny {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      max-width: 380px;
+      margin: 0 auto 2rem;
+    }
+
+    .reset-link {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      background: none;
+      border: none;
+      font-family: var(--sans);
+    }
+
+    footer {
+      background: var(--ink);
+      text-align: center;
+      padding: 1.25rem;
+      font-size: 0.75rem;
+      color: rgba(250,248,243,0.25);
+      letter-spacing: 0.05em;
+    }
+
+    .fade { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade.in { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <header class="hero fade">
+    <p class="hero-name">a very official proposal — specifically for Dhruvi</p>
+    <h1>Hey Dr. Dhruvi,<br>this is your <em>second date</em> invitation.</h1>
+    <p class="hero-sub">
+      Remember when you asked <strong>"are we meeting again?"</strong> and I casually said <strong>"I don't know"</strong>?
+      Well. I built you a whole website. So I think we both know the answer now.
+    </p>
+    <p class="hero-guj">ચાલ, 4th of July long weekend plan કરીએ? 🎆</p>
+    <div class="disclaimer">
+      <b>Note:</b> full rejection rights are still yours. I haven't forgotten.
+    </div>
+  </header>
+
+  <!-- ── ENERGY METER ── -->
+  <section class="energy-section fade">
+    <p class="energy-label">Dhruvi's weekday energy levels — an accurate representation</p>
+    <div class="energy-bar-wrap">
+      <div class="energy-bar" id="energy-bar"></div>
+    </div>
+    <p class="energy-caption" id="energy-caption">Monday–Friday: surviving on chai and willpower</p>
+    <button class="energy-toggle" id="energy-toggle" onclick="toggleEnergy()">see her on the long weekend →</button>
+  </section>
+
+  <!-- ── BANTER ── -->
+  <section class="banter-section fade">
+    <p class="banter-label">Exhibit A — things you said in LA that I remember too well</p>
+    <div class="chat-bubble-wrap">
+      <div style="align-self:flex-start">
+        <div class="bubble-label" style="color:#0C447C; padding-left:2px">him</div>
+        <div class="bubble him">"I haven't really gone on second dates with most people."</div>
+      </div>
+      <div style="align-self:flex-end">
+        <div class="bubble-label" style="color:#854F0B; text-align:right; padding-right:2px">dhruvi</div>
+        <div class="bubble her">"Oh so you're not gonna meet me again either?" 😐</div>
+      </div>
+      <div style="align-self:flex-start">
+        <div class="bubble him">"Also I'm usually the one who does the rejecting."</div>
+      </div>
+      <div style="align-self:flex-end">
+        <div class="bubble her">"Okay but what if we both don't like each other — are you at least gonna give me a chance to reject you?" 💅</div>
+      </div>
+      <div style="align-self:flex-end; margin-top:6px;">
+        <div class="bubble-label" style="color:#854F0B; text-align:right; padding-right:2px">dhruvi</div>
+        <div class="bubble her">"So… are we meeting again?" 🥺</div>
+      </div>
+      <div style="align-self:flex-start;">
+        <div class="bubble-label" style="color:#0C447C; padding-left:2px">him</div>
+        <div class="bubble him">"I don't know." 🙂</div>
+      </div>
+      <div style="align-self:flex-end;">
+        <div class="bubble her" style="background:#FDECEA; color:#7A2E2E; border-radius:16px; border-bottom-right-radius:4px; padding:10px 15px; font-size:0.88rem; max-width:78%; text-align:right;">😶‍🌫️ (upset but too dignified to say it)</div>
+      </div>
+    </div>
+    <p class="banter-note">
+      This entire website is my formal answer to "I don't know." Spoiler: I know. I very much want to meet again — and yes, your rejection chance is still on the table, scheduled for Day 3, post-brunch.
+    </p>
+  </section>
+
+  <!-- ── SECTION INTRO ── -->
+  <div class="section-intro fade">
+    <p>Two options. Both designed for someone who really needs a proper break.</p>
+    <span>Tu choose kar — હું બધું plan કરી લઈશ.</span>
+  </div>
+
+  <!-- ── OPTIONS ── -->
+  <div class="choice-wrapper">
+
+    <!-- OPTION A: LA -->
+    <div class="option fade">
+      <div class="option-badge badge-la">✈ Option A — I come to you</div>
+      <h2 class="option-title">LA & the Desert</h2>
+      <p class="option-hook">aka: I fly to you, so you can't say I didn't try.</p>
+      <p class="option-subtitle">Joshua Tree + Catalina Island · July 4–6</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;max-width:320px;">
+          <circle cx="240" cy="28" r="22" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1"/>
+          <circle cx="240" cy="28" r="14" fill="#FAC775" opacity="0.6"/>
+          <path d="M0 70 Q40 55 80 65 Q120 75 160 60 Q200 45 240 58 Q270 65 300 60 L300 90 L0 90Z" fill="#E8D5C0"/>
+          <path d="M60 68 L60 50 L52 56 M60 50 L68 56" stroke="#C47B4A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M100 65 L100 44 L90 51 M100 44 L110 51" stroke="#C47B4A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M145 58 Q155 30 165 58" stroke="#C47B4A" stroke-width="1.2" fill="none"/>
+          <path d="M212 64 Q220 44 228 64" stroke="#C47B4A" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="days">
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-la">Day 1 — July 4th</div>
+            
+          </div>
+          <div class="day-title">Joshua Tree National Park</div>
+          <div class="day-desc">Boulders, desert views, a good picnic lunch, and the quietest place you've been in months. No rushing, no agenda — just walk when you want, sit when you want.</div>
+          <div class="day-funny">"No hospital pager can reach you here. It's not a bug, it's a feature."</div>
+          <div class="day-tags">
+            <span class="tag">2.5 hr from LA</span>
+            
+            <span class="tag">boulders + trails</span>
+            
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-la">Day 2 — July 5th</div>
+            
+          </div>
+          <div class="day-title">Catalina Island</div>
+          <div class="day-desc">A car-free island an hour from Long Beach. Walk the harbour, rent a golf cart, explore — zero decisions required, I'll handle it all.</div>
+          <div class="day-funny">"Technically a different world from a busy hospital. Medically speaking."</div>
+          <div class="day-tags">
+            <span class="tag">ferry ride</span>
+            <span class="tag">car-free island</span>
+            <span class="tag">golf cart</span>
+            
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-la">Day 3 — July 6th</div>
+            
+          </div>
+          <div class="day-title">Slow morning + I fly back</div>
+          <div class="day-desc">Nothing scheduled. Good chai, a slow breakfast, actual rest. Rejection window officially opens at 11am if you need it.</div>
+          <div class="day-tags">
+            <span class="tag">zero agenda</span>
+            <span class="tag">good chai</span>
+            <span class="tag">verdict pending</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="pick-btn btn-la" onclick="choose('la')">
+        Fine, come to LA then ✦
+      </button>
+    </div>
+
+    <!-- OPTION B: SF -->
+    <div class="option fade">
+      <div class="option-badge badge-sf">🌉 Option B — Come to me</div>
+      <h2 class="option-title">SF & Big Sur</h2>
+      <p class="option-hook">aka: a small effort from you, a lot of effort from me.</p>
+      <p class="option-subtitle">Golden Gate + Fireworks + Big Sur · July 4–6</p>
+
+      <div class="illus">
+        <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;max-width:320px;">
+          <path d="M0 75 Q60 60 120 68 Q180 76 240 62 Q270 55 300 60 L300 90 L0 90Z" fill="#E0EAF5"/>
+          <rect x="118" y="20" width="7" height="60" fill="#2A5F8F" rx="1"/>
+          <rect x="175" y="20" width="7" height="60" fill="#2A5F8F" rx="1"/>
+          <path d="M36 30 Q121 4 178 20 Q230 4 264 30" stroke="#2A5F8F" stroke-width="2" fill="none"/>
+          <path d="M121 20 Q150 38 178 20" stroke="#B5CDE8" stroke-width="1.5" fill="none"/>
+          <line x1="0" y1="68" x2="300" y2="68" stroke="#B5CDE8" stroke-width="2"/>
+          <line x1="121" y1="20" x2="121" y2="68" stroke="#85B7EB" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="150" y1="14" x2="150" y2="68" stroke="#85B7EB" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="178" y1="20" x2="178" y2="68" stroke="#85B7EB" stroke-width="1" stroke-dasharray="3,3"/>
+          <circle cx="248" cy="16" r="3" fill="#FAC775"/>
+          <circle cx="260" cy="8" r="2" fill="#EF9F27"/>
+          <circle cx="268" cy="20" r="2.5" fill="#FAC775" opacity="0.8"/>
+          <circle cx="256" cy="25" r="1.8" fill="#EF9F27" opacity="0.7"/>
+          <circle cx="240" cy="12" r="1.5" fill="#FAC775" opacity="0.6"/>
+        </svg>
+      </div>
+
+      <div class="days">
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-sf">Day 1 — July 4th</div>
+            
+          </div>
+          <div class="day-title">Golden Gate & Fireworks</div>
+          <div class="day-desc">No early alarm. Come when you're ready. Walk the bridge, picnic at Crissy Field, then the best seat in the city for 4th of July fireworks over the bay.</div>
+          <div class="day-funny">"Statistically the most romantic plan I've ever made. Sample size: 1."</div>
+          <div class="day-tags">
+            <span class="tag">late start</span>
+            <span class="tag">Golden Gate walk</span>
+            <span class="tag">fireworks</span>
+            
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-sf">Day 2 — July 5th</div>
+            
+          </div>
+          <div class="day-title">Big Sur</div>
+          <div class="day-desc">Highway 1 down the coast — Bixby Bridge, McWay Falls, cliffs that drop into the Pacific. Windows down, good music, no rush. One of the most beautiful drives in the world.</div>
+          <div class="day-funny">"If you fall asleep in the car, I'll take it as a compliment. You needed the rest."</div>
+          <div class="day-tags">
+            <span class="tag">Highway 1</span>
+            <span class="tag">McWay Falls</span>
+            <span class="tag">Bixby Bridge</span>
+            
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <div class="day-label label-sf">Day 3 — July 6th</div>
+            
+          </div>
+          <div class="day-title">SF morning + travel back</div>
+          <div class="day-desc">Farmers market or brunch, no schedule. You rest, I handle logistics. I'll get you to the airport — and yes, rejection window opens at brunch if needed.</div>
+          <div class="day-tags">
+            <span class="tag">zero agenda</span>
+            
+            <span class="tag">airport dropoff</span>
+            <span class="tag">verdict pending</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="pick-btn btn-sf" onclick="choose('sf')">
+        Okay fine, I'll come to SF 🌉
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ── CHOSEN BANNER ── -->
+  <div class="chosen-banner" id="chosen-banner">
+    <div class="chosen-emoji" id="chosen-emoji"></div>
+    <h2 class="chosen-title" id="chosen-title"></h2>
+    <p class="chosen-sub" id="chosen-sub"></p>
+    <p class="chosen-funny" id="chosen-funny"></p>
+    <div id="escape-wrap" style="position:relative; height:60px; margin-bottom: 0.5rem;">
+      <button id="escape-btn" class="reset-link"
+        onmouseenter="runAway(this)"
+        ontouchstart="handleTouch(event, this)"
+        onclick="reset()"
+        style="position:absolute; transition: left 0.18s ease, top 0.18s ease; left:50%; transform:translateX(-50%);">
+        ← નહીં, ફરી વિચાર કરું (wait, let me reconsider)
+      </button>
+    </div>
+    <p id="escape-taunt" style="display:none; font-size:0.75rem; font-style:italic; color:var(--ink-soft); margin-top:0.25rem;">
+      નહીં. You already chose. Own it. 😌
+    </p>
+  </div>
+
+  <footer>dhruvi માટે બનાવ્યું — with slightly too much effort · july 4th weekend 2025</footer>
+
+  <script>
+    const responses = {
+      la: {
+        emoji: '🌵',
+        title: 'Desert, island, and a proper second date.',
+        sub: 'I\'ll sort everything — Joshua Tree on the 4th, Catalina on the 5th. Zero pressure. Just tell me you\'re in and I\'ll handle the rest.',
+        funny: 'Rejection window: July 6th, 11am onwards. I\'ll set a reminder. — ચિંતા ન કર, I won\'t hold it against you.'
+      },
+      sf: {
+        emoji: '🌉',
+        title: 'Fireworks over the bay, Big Sur, and you.',
+        sub: 'I\'ll sort your travel, the Golden Gate picnic, and the Big Sur drive. Pack a jacket — SF is cold and I don\'t control the weather.',
+        funny: 'Rejection window: July 6th, brunch. I\'ve noted it in the itinerary. — ખૂબ fair છે, I agree.'
+      }
+    };
+
+    function choose(opt) {
+      const r = responses[opt];
+      document.getElementById('chosen-emoji').textContent = r.emoji;
+      document.getElementById('chosen-title').textContent = r.title;
+      document.getElementById('chosen-sub').textContent = r.sub;
+      document.getElementById('chosen-funny').textContent = r.funny;
+      const banner = document.getElementById('chosen-banner');
+      banner.classList.add('show');
+      banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function reset() {
+      document.getElementById('chosen-banner').classList.remove('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const taunts = [
+      "નહીં. You already chose. Own it. 😌",
+      "Too late. The plan is happening. 🌵",
+      "નહીં નહીં. No take-backsies. 🙂",
+      "Running away? Bold from someone who called ME out for 'I don't know.' 😏",
+      "The button has left the chat. 👋",
+      "Doctor, please. Commit to the diagnosis. 🩺",
+    ];
+    let tauntIdx = 0;
+
+    function runAway(btn) {
+      const wrap = btn.parentElement;
+      const btnWidth = btn.offsetWidth;
+      const wrapWidth = wrap.offsetWidth;
+      const maxX = Math.max(wrapWidth - btnWidth, 0);
+
+      const currentLeft = btn.offsetLeft;
+      let newLeft = Math.random() * maxX;
+      let attempts = 0;
+      const minMove = Math.min(60, maxX * 0.3);
+      while (Math.abs(newLeft - currentLeft) < minMove && attempts < 20) {
+        newLeft = Math.random() * maxX;
+        attempts++;
+      }
+      btn.style.left = newLeft + 'px';
+      btn.style.transform = 'translateX(0)';
+
+      const taunt = document.getElementById('escape-taunt');
+      taunt.style.display = 'block';
+      taunt.textContent = taunts[tauntIdx % taunts.length];
+      tauntIdx++;
+    }
+
+    function handleTouch(e, btn) {
+      e.preventDefault();
+      runAway(btn);
+    }
+
+    let energyCharged = false;
+    function toggleEnergy() {
+      energyCharged = !energyCharged;
+      const bar = document.getElementById('energy-bar');
+      const caption = document.getElementById('energy-caption');
+      const btn = document.getElementById('energy-toggle');
+      if (energyCharged) {
+        bar.classList.add('charged');
+        caption.textContent = 'Long weekend: actually herself again ✦';
+        btn.textContent = '← back to weekday reality';
+      } else {
+        bar.classList.remove('charged');
+        caption.textContent = 'Monday–Friday: surviving on chai and willpower';
+        btn.textContent = 'see her on the long weekend →';
+      }
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
